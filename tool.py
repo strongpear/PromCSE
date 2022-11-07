@@ -324,27 +324,26 @@ if __name__ == "__main__":
     
     args = parser.parse_args()
     
-
+    with open('data.csv', 'r') as file:
+        df = pd.Dataframe(file)
+    
+    print(df)
     example_sentences = [
-        'An animal is biting a persons finger.',
-        'A woman is reading.',
-        'A man is lifting weights in a garage.',
-        'A man plays the violin.',
-        'A man is eating food.',
-        'A man plays the piano.',
-        'A panda is climbing.',
-        'A man plays a guitar.',
-        'A woman is slicing a meat.',
-        'A woman is taking a picture.'
+        'A free body diagram shows the directions of forces and the points of where the forces are acting upon a body. Free body diagrams simplifies the problems so that we can see the equilibrium.',
+        'We need to draw free-body diagrams to isolate the forces acting on the ring in the diagram. Once these external forces are isolated, the problem becomes a little easier because the free-body diagram allows us to easily find which forces are acting in the X and Y direction. Once these forces are found we can use the force equilibrium equations to calculate the values of the x and y components of each force.',
+        'Free Body Diagrams are used to show the different forces that are applied to an object. Along with being able to simplify the problem to be able to solve for things like tension, etc.. By doing so, the first step is to eliminate/ignore what is happening on the outside and specifically focus on what is happening on the objects. Then draw the forces accordingly.',
+        'Free to rotate in virtual space.'
     ]
     example_queries = [
-        'A man is playing music.',
-        'A woman is making a photo.'
+         """We draw the Free Body Diagram (or FBD, fbd) of the Body to isolate
+            the body of interest. This achieves two things:
+            1) The body is free to move and rotate in virtual space.
+            2) The internal forces of interest in the system are now external forces for applying Newton’s Second Law of Motion."""
     ]
 
     model = PromCSE(args)
 
-    print("\n=========Calculate cosine similarities between queries and sentences============\n")
+    """print("\n=========Calculate cosine similarities between queries and sentences============\n")
     similarities = model.similarity(example_queries, example_sentences)
     print(similarities)
 
@@ -365,4 +364,5 @@ if __name__ == "__main__":
         for sentence, score in result:
             print("    {}  (cosine similarity: {:.4f})".format(sentence, score))
         print("")
+    """
 
